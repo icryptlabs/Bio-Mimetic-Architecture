@@ -1,0 +1,24 @@
+{
+  "id": "sfa.arc.organism",
+  "name": "SFA-One: Arc Metabolism Dashboard",
+  "version": "1.0.0",
+  "description": "Tactile control surface for the Bio-Mimetic Agentic Swarm.",
+  "actions": [
+    {
+      "id": "trigger_reset",
+      "label": "Yamanaka Reset (Sox2)",
+      "icon": "reset_dna"
+    },
+    {
+      "id": "toggle_mesh",
+      "label": "Mycelial Mesh Pulse",
+      "icon": "mesh_network"
+    },
+    {
+      "id": "view_metabolism",
+      "label": "View Arc Ledger",
+      "icon": "usdc_symbol"
+    }
+  ],
+  "haptics": true
+}

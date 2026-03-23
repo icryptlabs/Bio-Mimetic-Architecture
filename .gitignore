@@ -1,0 +1,8 @@
+# METABOLIC PROTECTIONS: Exclude germline secrets
+.env
+ENTITY_SECRET_CIPHERTEXT
+__pycache__/
+.venv/
+node_modules/
+*.log
+.specify/memory/

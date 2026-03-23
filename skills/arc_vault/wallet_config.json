@@ -1,0 +1,27 @@
+{
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "name": "SFA-One-Vault",
+  "description": "Secure Credential Provider for sub-cent USDC transactions on Arc.",
+  "services": [
+    {
+      "name": "circle_wallet",
+      "endpoint": "https://api.circle.com/v1/wallets",
+      "api_key_ref": "CIRCLE_API_KEY"
+    },
+    {
+      "name": "arc_ledger",
+      "endpoint": "https://explorer.arc.circle.com/",
+      "kit_key_ref": "CIRCLE_KIT_KEY"
+    }
+  ],
+  "x402Support": true,
+  "supportedTrust": [
+    "reputation",
+    "crypto-economic"
+  ],
+  "registrations": [
+    {
+      "agentRegistry": "eip155:1:0x742..."
+    }
+  ]
+}

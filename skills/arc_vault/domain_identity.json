@@ -1,0 +1,13 @@
+{
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "name": "SFA-One-Identity",
+  "project_domain": "your-project-domain.com",
+  "verification_endpoint": "https://your-project-domain.com/.well-known/agent-registration.json",
+  "services": [
+    {
+      "name": "circle_settlement",
+      "endpoint": "https://api.circle.com/v1"
+    }
+  ],
+  "trust_mechanism": "DNS_Ownership_HTTPS"
+}
