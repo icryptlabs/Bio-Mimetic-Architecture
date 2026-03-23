@@ -1,0 +1,15 @@
+{
+  "name": "dev-controlled-projects",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "create-wallet": "node --env-file=.env --import=tsx create-wallet.ts"
+  },
+  "dependencies": {
+    "@circle-fin/developer-controlled-wallets": "latest"
+  },
+  "devDependencies": {
+    "tsx": "latest",
+    "@types/node": "latest"
+  }
+}
