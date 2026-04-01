@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SFA-One | Agentic Economy on Arc</title>
+  <meta name="description" content="SFA-One is a bio-mimetic agentic organism built for sub-cent USDC transactions on the Arc L1. Secure, compliant, autonomous machine-to-machine payments." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #050810;
+      --surface: #0c1020;
+      --card: #0f1628;
+      --border: rgba(99, 179, 237, 0.12);
+      --accent: #4fd1c5;
+      --accent2: #7c3aed;
+      --accent3: #f6ad55;
+      --text: #e2e8f0;
+      --muted: #718096;
+      --glow: rgba(79, 209, 197, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND GRID ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(79,209,197,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,209,197,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(5,8,16,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .dna-icon {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      animation: pulse-glow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 8px var(--glow); }
+      50% { box-shadow: 0 0 24px rgba(79,209,197,0.5); }
+    }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent), #38b2ac);
+      color: #050810 !important;
+      font-weight: 600;
+      padding: 0.45rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(79,209,197,0.08);
+      border: 1px solid rgba(79,209,197,0.25);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fade-up 0.6s ease both;
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      animation: fade-up 0.7s 0.1s ease both;
+    }
+
+    h1 .gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 50%, #f6ad55 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      max-width: 600px;
+      margin: 1.5rem auto 2.5rem;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.65;
+      font-weight: 400;
+      animation: fade-up 0.7s 0.2s ease both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fade-up 0.7s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #38b2ac);
+      color: #050810;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(79,209,197,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(79,209,197,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(79,209,197,0.4);
+      background: rgba(79,209,197,0.05);
+    }
+
+    /* ── METRICS STRIP ── */
+    .metrics {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 4rem;
+      animation: fade-up 0.7s 0.4s ease both;
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric-val {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.65;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .step-card:hover {
+      border-color: rgba(79,209,197,0.3);
+      transform: translateY(-4px);
+    }
+
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .step-card:hover::before { opacity: 1; }
+
+    .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .step-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .step-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── ARCHITECTURE GRID ── */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .arch-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .arch-card:hover {
+      border-color: rgba(79,209,197,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transform: translateY(-3px);
+    }
+
+    .arch-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .arch-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .arch-icon.teal { background: rgba(79,209,197,0.12); }
+    .arch-icon.purple { background: rgba(124,58,237,0.12); }
+    .arch-icon.orange { background: rgba(246,173,85,0.12); }
+    .arch-icon.blue { background: rgba(99,179,237,0.12); }
+    .arch-icon.green { background: rgba(72,187,120,0.12); }
+    .arch-icon.pink { background: rgba(236,72,153,0.12); }
+
+    .arch-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .arch-tag {
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      background: rgba(79,209,197,0.08);
+      border: 1px solid rgba(79,209,197,0.15);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .arch-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── LIVE DEMO TERMINAL ── */
+    .terminal {
+      background: #0a0e1a;
+      border: 1px solid rgba(79,209,197,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+    }
+
+    .terminal-bar {
+      background: #111827;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .t-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .t-dot.red { background: #ff5f56; }
+    .t-dot.yellow { background: #ffbd2e; }
+    .t-dot.green { background: #27c93f; }
+
+    .terminal-title {
+      margin-left: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .terminal-body {
+      padding: 1.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      min-height: 300px;
+    }
+
+    .t-line { display: flex; gap: 0.75rem; }
+    .t-prompt { color: var(--accent); flex-shrink: 0; }
+    .t-cmd { color: #e2e8f0; }
+    .t-out { color: var(--muted); padding-left: 1.5rem; }
+    .t-success { color: #48bb78; padding-left: 1.5rem; }
+    .t-warn { color: #f6ad55; padding-left: 1.5rem; }
+    .t-cursor {
+      display: inline-block;
+      width: 8px; height: 1rem;
+      background: var(--accent);
+      animation: cursor-blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ── COMPLIANCE STRIP ── */
+    .compliance-strip {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .compliance-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .compliance-badge:hover {
+      border-color: rgba(79,209,197,0.3);
+      color: var(--text);
+    }
+
+    .compliance-badge .check { color: var(--accent); }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(79,209,197,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-box {
+      position: relative;
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid rgba(79,209,197,0.2);
+      border-radius: 24px;
+      padding: 4rem 3rem;
+    }
+
+    .cta-box h2 { margin-bottom: 1rem; }
+
+    .cta-box p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .metrics { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="dna-icon">🧬</div>
+    SFA-One
+  </div>
+  <div class="nav-links">
+    <a href="#how-it-works">How it Works</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#demo">Live Demo</a>
+    <a href="#contact" class="nav-cta">Request Access →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Now live on Arc L1 Testnet
+  </div>
+
+  <h1>
+    The World's First<br />
+    <span class="gradient">Bio-Mimetic Agentic</span><br />
+    Payment Organism
+  </h1>
+
+  <p class="hero-sub">
+    SFA-One executes autonomous, compliant machine-to-machine transactions
+    at sub-cent cost — secured by an immune system, settled on-chain.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#demo" class="btn-primary">▶&nbsp; Watch Live Demo</a>
+    <a href="https://github.com/icryptlabs/Bio-Mimetic-Architecture" target="_blank" class="btn-secondary">View Source →</a>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-val">&lt; $0.01</div>
+      <div class="metric-label">Cost per action</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">50+</div>
+      <div class="metric-label">Agents in swarm</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">100%</div>
+      <div class="metric-label">On-chain audit</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">PCI v4.0</div>
+      <div class="metric-label">Compliant</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <p class="section-label">Process</p>
+  <h2>How SFA-One Works</h2>
+  <p class="section-desc">
+    A living payment pipeline — intent is captured, validated, settled, and permanently recorded.
+  </p>
+  <div class="steps fade-in">
+    <div class="step-card">
+      <div class="step-num">01 / INTENT</div>
+      <div class="step-icon">🎙️</div>
+      <div class="step-title">Voice Intent Capture</div>
+      <div class="step-desc">WhisperSpeech converts multilingual voice commands into structured payment mandates with zero cloud dependency.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02 / VERIFY</div>
+      <div class="step-icon">🛡️</div>
+      <div class="step-title">Immune System Check</div>
+      <div class="step-desc">Wazuh Pattern Recognition Receptors screen every transaction for fraud and compliance before execution.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03 / SETTLE</div>
+      <div class="step-icon">⚡</div>
+      <div class="step-title">Sub-Cent Settlement</div>
+      <div class="step-desc">The Builder agent executes USDC micropayments on Arc L1 via x402 HTTP-native M2M payment protocol.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04 / VALIDATE</div>
+      <div class="step-icon">🧪</div>
+      <div class="step-title">Independent Validation</div>
+      <div class="step-desc">A separate Validator agent cross-checks every hash before the Methylation Mark is written to the XRP Ledger.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">05 / FIXATE</div>
+      <div class="step-icon">🔗</div>
+      <div class="step-title">Epigenetic Fixation</div>
+      <div class="step-desc">All audit trails are permanently inscribed on the XRPL — immutable, non-repudiable, and verifiable in real-time.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ARCHITECTURE -->
+<section id="architecture">
+  <p class="section-label">System Design</p>
+  <h2>Bio-Mimetic Architecture</h2>
+  <p class="section-desc">
+    Every subsystem mirrors a biological function — creating an organism that self-regulates, defends, and evolves.
+  </p>
+  <div class="arch-grid fade-in">
+    <div class="arch-card">
+      <div class="arch-header">
+        <div class="arch-icon teal">⚡</div>
+        <div>
+          <div class="arch-name">Metabolism</div>
+          <div class="arch-tag">Circle x402</div>
+        </div>
+      </div>
+      <div class="arch-desc">Circle Nanopayments power every agent action. The x402 HTTP protocol gates compute behind verified USDC payments — energy in, value out.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-header">
+        <div class="arch-icon purple">🛡️</div>
+        <div>
+          <div class="arch-name">Immune System</div>
+          <div class="arch-tag">Wazuh PRR</div>
+        </div>
+      </div>
+      <div class="arch-desc">Pattern Recognition Receptors (PRRs) detect anomalies and trigger inflammatory responses — halting rogue transactions before they propagate.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-header">
+        <div class="arch-icon orange">🌐</div>
+        <div>
+          <div class="arch-name">Sovereignty</div>
+          <div class="arch-tag">Gemma 3n Local</div>
+        </div>
+      </div>
+      <div class="arch-desc">Gemma 3n and WhisperSpeech run locally on NVIDIA hardware — the Nanog factor ensuring off-grid inference without cloud dependency.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-header">
+        <div class="arch-icon blue">🪪</div>
+        <div>
+          <div class="arch-name">Identity</div>
+          <div class="arch-tag">ERC-8004 / Peaq</div>
+        </div>
+      </div>
+      <div class="arch-desc">Each agent is minted as an IP NFT on the Peaq Ledger via ERC-8004 — giving every autonomous actor a verifiable, hardware-bound identity.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-header">
+        <div class="arch-icon green">👁️</div>
+        <div>
+          <div class="arch-name">Visual Cortex</div>
+          <div class="arch-tag">Vertex AI Vision</div>
+        </div>
+      </div>
+      <div class="arch-desc">Vertex AI Vision interprets UI elements and physical environments without API/DOM access — all visual specs are grounded to XRPL audit trails.</div>
+    </div>
+    <div class="arch-card">
+      <div class="arch-header">
+        <div class="arch-icon pink">📡</div>
+        <div>
+          <div class="arch-name">Mycelial Network</div>
+          <div class="arch-tag">Meshtastic LoRa</div>
+        </div>
+      </div>
+      <div class="arch-desc">Encrypted, decentralized agent-to-agent communication via Meshtastic LoRa — mesh telepathy that survives without a cloud bloodstream.</div>
+    </div>
+  </div>
+
+  <!-- Compliance badges -->
+  <div class="compliance-strip fade-in" style="margin-top:3rem;">
+    <div class="compliance-badge"><span class="check">✓</span> PCI DSS v4.0.1</div>
+    <div class="compliance-badge"><span class="check">✓</span> XRPL Audit Trail</div>
+    <div class="compliance-badge"><span class="check">✓</span> x402 M2M Payments</div>
+    <div class="compliance-badge"><span class="check">✓</span> ERC-8004 Identity</div>
+    <div class="compliance-badge"><span class="check">✓</span> BNB Chain Settlement</div>
+    <div class="compliance-badge"><span class="check">✓</span> MNEE Stablecoin</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LIVE DEMO -->
+<section id="demo">
+  <p class="section-label">Live Demo</p>
+  <h2>See the Organism Run</h2>
+  <p class="section-desc">
+    A real-time trace of SFA-One processing a compliant USDC micropayment through the full pipeline.
+  </p>
+
+  <div class="terminal fade-in">
+    <div class="terminal-bar">
+      <div class="t-dot red"></div>
+      <div class="t-dot yellow"></div>
+      <div class="t-dot green"></div>
+      <div class="terminal-title">sfa-one — organism trace</div>
+    </div>
+    <div class="terminal-body" id="terminal-output"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <div class="cta-box fade-in">
+    <h2>Ready to Deploy<br /><span style="background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Your Agentic Economy?</span></h2>
+    <p>
+      SFA-One is built for enterprises running high-frequency, compliance-critical
+      machine-to-machine workflows. Request a live walkthrough with the team.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="mailto:hello@icryptlabs.com" class="btn-primary">Request a Demo →</a>
+      <a href="https://github.com/icryptlabs/Bio-Mimetic-Architecture" target="_blank" class="btn-secondary">Read the Docs</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by <a href="https://github.com/icryptlabs" target="_blank">ICryptLabs</a> · Powered by Arc L1, Circle, XRPL &amp; Peaq · 
+  <a href="https://github.com/icryptlabs/Bio-Mimetic-Architecture" target="_blank">GitHub →</a></p>
+</footer>
+
+<script>
+  // ── Scroll-reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── Terminal animation ──
+  const lines = [
+    { type: 'prompt', cmd: 'uv run sfa_orchestrator.py --mode=demo' },
+    { type: 'out', text: '🧬  SFA-One v1.0 | Bio-Mimetic Organism Initializing...' },
+    { type: 'success', text: '✓  Nanog Sovereignty Layer: Gemma 3n loaded [LOCAL]' },
+    { type: 'success', text: '✓  Immune System: Wazuh PRRs armed [3 receptors active]' },
+    { type: 'success', text: '✓  Identity: ERC-8004 NFT verified [Peaq Ledger]' },
+    { type: 'out', text: '' },
+    { type: 'prompt', cmd: '# Processing mandate: USDC payment of $0.0042 → Arc L1' },
+    { type: 'out', text: '  [Broca]     Voice intent parsed → "Execute sub-cent settlement"' },
+    { type: 'out', text: '  [PRR]       Scanning transaction for anomalies...' },
+    { type: 'success', text: '  [PRR]       ✓ Sterile — no pathogens detected' },
+    { type: 'out', text: '  [Builder]   Executing x402 HTTP payment via PayRam...' },
+    { type: 'success', text: '  [Builder]   ✓ Settled  |  hash: 0x7da3499...8f2c1a' },
+    { type: 'out', text: '  [Validator] Cross-checking Arc Block Explorer...' },
+    { type: 'success', text: '  [Validator] ✓ Confirmed — writing Methylation Mark' },
+    { type: 'warn', text:  '  [XRPL]     → Epigenetic fixation complete | ledger seq: 84,291,337' },
+    { type: 'out', text: '' },
+    { type: 'success', text: '🔗  Audit trail immutably inscribed. Cost: $0.0042. Time: 1.3s' },
+    { type: 'prompt', cmd: '█', cursor: true },
+  ];
+
+  const out = document.getElementById('terminal-output');
+  let i = 0;
+
+  function renderLine(line) {
+    const div = document.createElement('div');
+    if (line.type === 'prompt') {
+      div.className = 't-line';
+      div.innerHTML = `<span class="t-prompt">sfa@arc $</span><span class="t-cmd">${line.cmd}${line.cursor ? '<span class="t-cursor"></span>' : ''}</span>`;
+    } else if (line.type === 'success') {
+      div.className = 't-success';
+      div.textContent = line.text;
+    } else if (line.type === 'warn') {
+      div.className = 't-warn';
+      div.textContent = line.text;
+    } else {
+      div.className = 't-out';
+      div.textContent = line.text;
+    }
+    out.appendChild(div);
+    out.scrollTop = out.scrollHeight;
+  }
+
+  function typeNext() {
+    if (i < lines.length) {
+      renderLine(lines[i++]);
+      const delay = lines[i - 1].type === 'prompt' ? 600 : lines[i - 1].text === '' ? 200 : 280;
+      setTimeout(typeNext, delay);
+    }
+  }
+
+  // Start terminal when in view
+  const termObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && i === 0) {
+        setTimeout(typeNext, 600);
+        termObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  termObserver.observe(document.getElementById('terminal-output'));
+</script>
+
+</body>
+</html>
