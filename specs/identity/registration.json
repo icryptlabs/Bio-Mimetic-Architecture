@@ -1,0 +1,12 @@
+{
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "name": "SFA-One-Alpha",
+  "description": "Secure Flow Architect agent for the Agentic Economy [Source 432].",
+  "image": "ipfs://QmAgentImageHash",
+  "services": [
+    { "name": "MCP", "endpoint": "https://mcp.sfa-one.io/", "version": "2025-06-18" },
+    { "name": "A2A", "endpoint": "https://sfa-one.io/.well-known/agent-card.json" }
+  ],
+  "x402Support": true,
+  "supportedTrust": ["reputation", "tee-attestation"]
+}

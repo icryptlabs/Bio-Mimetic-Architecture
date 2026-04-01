@@ -1,6 +1,24 @@
-# SFA-One: Arc High-Frequency Execution Tasks
-1. **Identity Fixation:** Establish DNS ownership on your-project-domain.com [Source 472].
-2. **Credentialing:** Obtain Client Key from console.circle.com [Source 908].
-3. **Innate Defense:** Verify .well-known endpoints to prevent 'Bot Firewalls' from blocking the agent [Source 45].
-4. **Metabolism:** Execute 50+ transactions (Throttled by MX Dial).
-5. **Fixation:** Verify on Arc Block Explorer and signal via MX Master 4 haptics.
+# SFA-One: Differentiated Task List [Source 356, 510]
+
+- [ ] **Task 1: Capture Intent (RNA Signal)**
+  - Owner: `shopping_agent` 
+  - Output: `IntentMandate` [Source 244, 513]
+  - Status: Pending
+- [ ] **Task 2: Negotiate Cart (Binding)**
+  - Owner: `merchant_agent` 
+  - Depends On: Task 1
+  - Output: Signed `CartMandate` [Source 245, 513]
+  - Status: Pending
+- [ ] **Task 3: Authorize Payment (Myc Factor)**
+  - Owner: `credential_provider` 
+  - Depends On: Task 2
+  - Trigger: Physical 'Stylus Tap' via Logitech MX Ink [Source 333, 515]
+  - Status: Pending
+- [ ] **Task 4: Execute Settlement (Builder)**
+  - Owner: `settlement_builder` 
+  - Action: Route USDC via PayRam Bridge on Arc L1 [Source 64, 514, 1011]
+  - Status: Pending
+- [ ] **Task 5: Fixate & Verify (Validator)**
+  - Owner: `compliance_validator` 
+  - Action: Write transaction hash to XRPL Epigenetic Barrier [Source 331, 516]
+  - Status: Pending

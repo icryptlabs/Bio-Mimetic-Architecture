@@ -1,9 +1,9 @@
----
-name: arc-credential-provider
-description: Secure vault for USDC wallets and cryptographic signing on Arc.
----
-# Instructions
-1. Hold private keys for Arc/Circle wallets in an isolated environment [3].
-2. Do NOT release Payment Mandate signatures autonomously.
-3. **Myc Factor Verification:** Only execute `sign_mandate()` upon receiving a physical haptic signal from the MX Ink stylus [7, 9].
-4. Write the resulting transaction hash to the Arc Block Explorer to create the Epigenetic Barrier [10].
+--- 
+name: credential-provider
+description: Secure vault for payment credentials with hardware-bound signing (The Myc Factor) [Source 511, 515].
+--- 
+# Credential Provider Protocol
+1. **Vault Management:** Hold user payment methods (CARD, BANK_ACCOUNT, DIGITAL_WALLET) in a non-reactive, isolated context [Source 251, 515].
+2. **Hardware Locking:** Do NOT release cryptographic signatures autonomously [Source 515].
+3. **Myc Factor Trigger:** Wait for a physical haptic pulse from the Logitech MX Ink via the Actions SDK [Source 333, 337].
+4. **Signature Release:** Once physically authorized, sign the AP2 `PaymentMandate` and route to the Settlement Layer [Source 241, 515].

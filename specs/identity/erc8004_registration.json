@@ -1,0 +1,56 @@
+{
+  "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
+  "name": "SFA-One-IP-Architect",
+  "version": "2.0.0",
+  "description": "Autonomous agent responsible for creating, fixating, and licensing digital assets as IP Offspring on XRPL and Arc L1 [Source 431, 755].",
+  "capabilities": [
+    "ip-fixation",
+    "lineage-audit",
+    "x402-licensing",
+    "erc8004-identity"
+  ],
+  "services": [
+    {
+      "name": "IP-Registry",
+      "endpoint": "https://ip.sfa-one.io/v1",
+      "version": "1.0.0",
+      "description": "Primary NFT minting and lineage registration endpoint (XRPL)."
+    },
+    {
+      "name": "IP-Registry-Arc",
+      "endpoint": "https://arc-ip.sfa-one.io/v1",
+      "version": "1.0.0",
+      "description": "Secondary fixation endpoint (Arc L1) for dual-chain redundancy [Source 838]."
+    },
+    {
+      "name": "Lineage-Audit",
+      "endpoint": "https://ip.sfa-one.io/v1/audit",
+      "version": "1.0.0",
+      "description": "Read-only endpoint to verify IP lineage records across both chains."
+    },
+    {
+      "name": "License-Registry",
+      "endpoint": "https://ip.sfa-one.io/v1/license",
+      "version": "1.0.0",
+      "description": "x402-gated smart contract endpoint for commercial licensing [Source 855, 859]."
+    }
+  ],
+  "x402Support": true,
+  "methylationLayer": {
+    "primary": "xrpl",
+    "secondary": "arc",
+    "hashAlgorithm": "sha256"
+  },
+  "registrations": [
+    {
+      "agentId": 1,
+      "role": "IP-Architect",
+      "agentRegistry": "eip155:1:0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+      "xrplWallet": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+      "arcWallet": "0x0000000000000000000000000000000000000001",
+      "mintedAt": "2026-04-01T00:00:00Z"
+    }
+  ],
+  "parentEntity": "icryptlabs/Bio-Mimetic-Architecture",
+  "constitutionRef": "specs/constitution/sfa_one_constitution.md"
+}

@@ -1,8 +1,9 @@
----
-name: arc-shopping-interface
-description: The primary user-facing interface for the Agentic Economy on Arc.
----
-# Instructions
-1. Capture user instructions and translate them into a sequence-specific Intent Mandate [11].
-2. Ensure the Intent Mandate serves as the template for re-establishment after the Sox2 context flush [12].
-3. Coordinate the triple-agent flow to find the best sub-cent service providers on Arc [2].
+--- 
+name: shopping-agent
+description: Interface for capturing user intent and coordinating the discovery of Cart Mandates [Source 511, 512].
+--- 
+# Shopping Agent Protocol
+1. **Intent Synthesis:** Convert natural language prompts into structured AP2 `IntentMandate` objects [Source 247, 308].
+2. **Discovery Negotiation:** Call `find_products` to receive cryptographically signed `CartMandate` offers from merchants [Source 240, 247].
+3. **Selection:** Present options to the user and call `update_chosen_cart_mandate` upon confirmation [Source 248].
+4. **Handoff:** Transition the specific Intent and Cart data to the Credential Provider for hardware-bound execution [Source 240, 511].

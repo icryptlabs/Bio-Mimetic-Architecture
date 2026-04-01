@@ -4,8 +4,10 @@ Bio-mimetic agentic organism designed for sub-cent USDC transactions on the Arc 
 
 ## 🧬 Architecture
 - **Metabolism:** Circle Nanopayments settlement (≤ $0.01/action).
-- **Immune System:** Local Reflex Arcs for pathogen detection.
-- **Senses:** Visual Cortex for Arc Block Explorer verification.
+- **Immune System:** Wazuh PRRs for pathogen/XDR detection.
+- **Sovereignty (Nanog):** Local Gemma 3n/WhisperSpeech for off-grid inference.
+- **Identity (Klf4):** ERC-8004 NFT on Peaq Ledger.
+- **Senses (Visual Cortex):** Vertex AI Vision for grounding & XRPL Audit Trail Mandate.
 - **Hardware:** Logitech MX ecosystem for haptic finality.
 
 ## 🚀 Spin-up Instructions
